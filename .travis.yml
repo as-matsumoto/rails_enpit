@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+- 2.2.5
+- 1.9.3
+- jruby-19mode
+- rbx-2
+deploy:
+  provider: heroku
+  api_key:
+    secure: AfSMOXj7smeB1zoD5y2C1F5LZhP+6UxwY2OFvSBhVFSB1qBB6wfY74cNqo/npSBJi2AP4TYewPe1qvwXQ8uupyYFYJjXvDnSyxBsCJcPrXcmHl+fD7wtNUmZuUnp7seX/gimPl8eS4dgHj2xQDzH7ljpAB9I41y/OLr2fe1E/Xfd6slj8QHG4ig3TnFOpgSh+z1z/oWX21G77LL4KX1ySkZOEYZwRYk17MMJwHjkXkcqGnV2dtfmESDZapv/d1zZZ69kfAO/8UsRI8FRdtt0YdBAG0IY+fJ50WupQw/lR3rtAsQWCsFuJxuPIHWNJehpjdkURFaPLV3bO2ZWKN94q+/YFV16yViPSGs97qbtp1ZXRFqeIk0QgdytxxgpptsfxHZflVHpldiJkqTOtl5GlHlDY9/BCTW7L9zByKDydiWBgbJuL0yP+gDJ6L+3zi14k7xxfIpxbpmsEj7tdUh/AtCaivIQnd/k2XhpkvtgWS4S/PsTr69YzdZQCsIutNv6mN/HDbarHJmhFebmotTNYHwXI3PHe+KO92pdYJTxWGJSonkRcwCF8wHRdwRTh5El+CLDnVp0ty8d0uFsohduhmKttUCgsljfZt5vn6sqI6hc619/smWYZZnOp6sKMhZuflcWrwRf1xk8/d/5bdbEUA178yDbBRI70ZGE492/Lyk=
+  app: rails_enpit
+  on:
+    repo: as-matsumoto/rails_enpit
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:migrate RAILS_ENV=test
