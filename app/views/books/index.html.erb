@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>タイトル</th>
-      <th>コメント</th>
+      <th>投稿者</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= book.author %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'コメントを投稿する', new_book_path %>
+<%= link_to 'メッセージを投稿する', new_book_path %>
