@@ -3,7 +3,9 @@
 one:
   title: MyString
   author: MyString
+  message: MyString
 
 two:
   title: MyString
   author: MyString
+  message: MyString
